@@ -1,0 +1,11 @@
+
+<h3>Formulaire d'une activité</h3>
+
+{% for notice in app.session.flashbag.get('info') %}
+	<p class="alert alert-info">{{ notice }}</p>
+{% endfor %}
+
+<form method="post" novalidate="novalidate">
+  {{ form_widget(form) }}
+  <input type="submit" class="btn btn-primary" />
+</form>

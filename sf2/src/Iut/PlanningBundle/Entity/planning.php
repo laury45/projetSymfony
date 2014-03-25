@@ -4,6 +4,8 @@ namespace Iut\PlanningBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * planning
  *
@@ -25,6 +27,7 @@ class planning
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255)
+     * @ORM\JoinColumn(name="utilisateurs_login", referencedColumnName="login")
      */
     private $login;
 
@@ -32,6 +35,7 @@ class planning
      * @var string
      *
      * @ORM\Column(name="activite", type="string", length=255)
+     * @ORM\JoinColumn(name="activites_activite", referencedColumnName="activite")
      */
     private $activite;
 
@@ -39,6 +43,7 @@ class planning
      * @var string
      *
      * @ORM\Column(name="heure", type="string", length=255)
+     * @ORM\JoinColumn(name="heures_heure", referencedColumnName="heure")
      */
     private $heure;
 
