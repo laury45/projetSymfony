@@ -28,11 +28,11 @@ class DefaultController extends Controller
     public function utilisateurAction($id)
     {
         $person = empty($id)
-                  ? new \Iut\PlanningBundle\Entity\utilisateurs()
+                  ? new \Iut\PlanningBundle\Entity\User()
                   : $this->getDoctrine()->getManager()
-                  ->getRepository('PlanningBundle:utilisateurs')->find($id);
+                  ->getRepository('PlanningBundle:User')->find($id);
 
-        $form = $this->createForm(new \Iut\PlanningBundle\Form\utilisateursType(),$person);
+        $form = $this->createForm(new \Iut\PlanningBundle\Form\UserType(),$person);
 
         $request = $this->get('request'); // $this->getRequest():
 
@@ -119,5 +119,13 @@ class DefaultController extends Controller
         }
         return $this->render('PlanningBundle:Default:ajouterh.html.twig',
                              array('form'=>$form->createView()));
+    }
+
+
+
+    public function authentificationAction($id){
+      $user=$this->getDoctrine()->getManager()->getRepository('PlanningBundle:utilisateurs')->find($id); 
+      $form=$this->createForm(new \Iut\PlanningBundle\Form\utilisateurs(),$user); 
+      
     }
 }
