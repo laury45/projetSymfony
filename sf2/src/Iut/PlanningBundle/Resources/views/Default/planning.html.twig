@@ -1,0 +1,106 @@
+{% extends "PlanningBundle::layoutPlanning.html.twig" %}
+
+{% block body %}
+<div class="navbar navbar-inverse navbar-fixed-top">
+  		<div class="navbar-inner">
+  			<div class="container-fluid">
+  				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</button>
+  				<a class="brand" href="#">Accueuil</a>
+  				<div class="nav-collapse collapse">
+  				</div><!--/.nav-collapse -->
+  			</div>
+
+  		</div>
+  	</div>
+  	<div class="span8">
+<form action="DefaultController.php", method="post">
+	<fieldset>
+					<legend> selectionnez votre heure et votre activite</legend>
+
+					<p>
+						<label for="activite">Activité: </label>
+						<select name="activite" size="1">
+							<option >java</option>
+							<option >python</option>
+							<option >anglais</option>
+							<option >cafe</option>
+							<option >repos</option>
+							<option >php</option>
+						</select>
+						<a href="http://localhost/~valin/webav/planningSymfony/sf2/web/app_dev.php/ajouteract">ajouter une activite</a>
+					</p>
+
+					<p> 
+						<label for="dateact"></label>
+
+
+	</fieldset>
+
+	<fieldset>
+	<label for="heure">Heure: </label>
+				<select name="heure" size="1">
+					<option value="08:00">08:00</option>
+					<option value="09:00">09:00</option>
+					<option value="10:00">10:00</option>
+					<option value="11:00">11:00</option>
+					<option value="12:00">12:00</option>
+					<option value="13:00">13:00</option>
+					<option value="14:00">14:00</option>
+					<option value="15:00">15:00</option>
+					<option value="16:00">16:00</option>
+					<option value="17:00">17:00</option>
+					<option value="18:00">18:00</option>
+					<option value="19:00">19:00</option>
+					<option value="20:00">20:00</option>
+				</select>
+				<a href="http://localhost/~valin/webav/planningSymfony/sf2/web/app_dev.php/ajouterh">ajouter une heure</a
+	</fieldset>
+	<fieldset>					
+
+
+					<p>Date:</br> 
+						<div id="datetimepicker" class="input-append date">
+							<input type="text" id="datepicker" name="dateact"></input>
+							<span class="add-on">
+								<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+							</span>
+						</div>
+						<script type="text/javascript"
+							src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+						</script> 
+						<script type="text/javascript"
+							src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+						</script>
+						<script type="text/javascript"
+							src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+						</script>
+						<script type="text/javascript"
+							src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+						</script>
+
+						<script type="text/javascript">
+							$('#datetimepicker').datetimepicker({
+								format: 'yyyy/MM/dd',
+								startDate: '-3d'
+							});
+						</script><!--<input type="text" id="datepicker" name="dateact"></p>-->
+
+
+
+
+
+					
+					</p>
+					</p>
+					<a href="http://localhost/~valin/webav/planningSymfony/sf2/web/app_dev.php/ajouteruti">ajouter un utilisateur</a>
+
+	</fieldset>
+	<form> 
+	</form>
+</form>
+
+{% endblock %}

@@ -5,6 +5,7 @@ namespace Iut\PlanningBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class DefaultController extends Controller
 {
@@ -27,17 +28,22 @@ class DefaultController extends Controller
      */
     public function utilisateurAction($id)
     {
+        $factory = $this->get('security.encoder_factory');
         $person = empty($id)
-                  ? new \Iut\PlanningBundle\Entity\User()
+                  ? new \Iut\PlanningBundle\Entity\utilisateurs()
                   : $this->getDoctrine()->getManager()
-                  ->getRepository('PlanningBundle:User')->find($id);
+                  ->getRepository('PlanningBundle:utilisateurs')->find($id);
 
-        $form = $this->createForm(new \Iut\PlanningBundle\Form\UserType(),$person);
+        $form = $this->createForm(new \Iut\PlanningBundle\Form\utilisateursType(),$person);
 
         $request = $this->get('request'); // $this->getRequest():
 
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
+
+            $encoder = $factory->getEncoder($person);
+            $password = $encoder->encodePassword('ryanpass', $person->getSalt());
+            $person->setPassword($password);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($person);
@@ -121,11 +127,12 @@ class DefaultController extends Controller
                              array('form'=>$form->createView()));
     }
 
-
-
-    public function authentificationAction($id){
-      $user=$this->getDoctrine()->getManager()->getRepository('PlanningBundle:utilisateurs')->find($id); 
-      $form=$this->createForm(new \Iut\PlanningBundle\Form\utilisateurs(),$user); 
-      
+    /**
+     * @Route("/planning")
+     * @Template()
+     */
+    public function planningAction(){
+      return array(); 
     }
+    
 }
